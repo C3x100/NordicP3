@@ -1,0 +1,31 @@
+// Module profiles. Copy this file next to NordicP3.exe to edit it.
+// Request/response IDs below are the standard OBD-II engine addresses, which every
+// OBD-compliant ECM answers. Volvo-specific addresses and the read/write parameters
+// get filled in from the CAN captures.
+{
+  "modules": [
+    {
+      "name": "Engine ECM (Denso) - 3.2 B6324S / T6 B6304T2/T4",
+      "requestId": "0x7E0",
+      "responseId": "0x7E8",
+      "baud": 500000,
+      "extendedIds": false,
+      "obdInfo": true,
+      "dids": [
+        { "did": "F190", "label": "VIN (UDS)", "ascii": true },
+        { "did": "F187", "label": "Spare part number", "ascii": true },
+        { "did": "F188", "label": "ECU software number", "ascii": true },
+        { "did": "F189", "label": "ECU software version", "ascii": true },
+        { "did": "F18C", "label": "ECU serial number", "ascii": true },
+        { "did": "F191", "label": "ECU hardware number", "ascii": true },
+        { "did": "F197", "label": "System name", "ascii": true }
+      ],
+      "flash": {
+        "configured": false,
+        "imageSizeBytes": 0,
+        "minVoltage": 12.5,
+        "notes": "Awaiting CAN capture of a VIDA or tool read/write on this ECM."
+      }
+    }
+  ]
+}

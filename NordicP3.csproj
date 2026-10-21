@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>NordicP3</AssemblyName>
+    <RootNamespace>NordicP3</RootNamespace>
+    <Version>0.1.0</Version>
+
+    <!-- J2534 vendor DLLs are almost always 32-bit, and a process can only load
+         DLLs of its own bitness. Build x86 so the DiCE driver can be loaded. -->
+    <PlatformTarget>x86</PlatformTarget>
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+
+    <!-- One .exe, .NET runtime bundled: the user installs nothing but the DiCE driver. -->
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>embedded</DebugType>
+
+    <!-- Lets the project build on non-Windows CI machines too. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="profiles.json" />
+  </ItemGroup>
+
+  <!-- WPF's implicit usings omit System.IO (it clashes with System.Windows.Shapes.Path).
+       Nothing here uses Shapes, so import it for every file. -->
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+</Project>
