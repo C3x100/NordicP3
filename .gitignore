@@ -1,1 +1,6 @@
 logs/
+
+# Build output (recreated by build.bat / dotnet)
+bin/
+obj/
+dist/
