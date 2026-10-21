@@ -5,7 +5,7 @@
 {
   "modules": [
     {
-      "name": "Engine ECM (Denso) - 3.2 B6324S / T6 B6304T2/T4",
+      "name": "Engine ECM (Denso)",
       "requestId": "0x7E0",
       "responseId": "0x7E8",
       "baud": 500000,

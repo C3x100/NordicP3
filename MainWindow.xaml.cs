@@ -28,6 +28,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        var version = GetType().Assembly.GetName().Version!;
+        VersionText.Text = $"v{version.Major}.{version.Minor}";
         InfoList.ItemsSource = _info;
         DtcList.ItemsSource = _dtcs;
         _voltTimer.Tick += async (_, _) => await PollVoltageAsync();
